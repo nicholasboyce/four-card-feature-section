@@ -1,0 +1,96 @@
+:root {
+    --clr-primary-red: hsl(0, 78%, 62%);
+    --clr-primary-cyan: hsl(180, 62%, 55%);
+    --clr-primary-orange: hsl(34, 97%, 64%);
+    --clr-primary-blue: hsl(212, 86%, 64%);
+
+    --clr-neutral-dark-blue: hsl(234, 12%, 34%);
+    --clr-neutral-gray-blue: hsl(229, 6%, 66%);
+    --clr-neutral-light-gray: hsl(0, 0%, 98%);
+
+    --fs-p: 15px;
+    --ff-default: 'Poppings', sans-serif;
+    --fw-extralight: 200;
+    --fw-regular: 400;
+    --fw-semibold: 600;
+}
+
+* {
+    font: inherit;
+    margin: 0;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    min-height: 100svh;
+    padding: 5rem;
+    grid-template-rows: auto 1fr;
+    row-gap: 2rem;
+    font-family: var(--ff-default);
+    font-size: var(--fs-p);
+}
+
+header {
+    text-align: center;
+    display: grid;
+    row-gap: 1rem;
+}
+
+.page-title,
+.page-subtitle {
+    font-size: calc(var(--fs-p) * 2.5);
+}
+
+.page-title {
+    font-weight: var(--fw-extralight);
+}
+
+.page-subtitle {
+    font-weight: var(--fw-semibold);
+}
+
+main {
+    display: grid;
+    align-items: center;
+}
+
+@media (min-width: 600px) {
+    main {
+        grid-template-columns: [page-start] 1fr [middle-start] 1fr [middle-end] 1fr [page-end];
+        grid-template-rows: [page-start] 1fr [middle-start] 1fr [middle-middle] 1fr [middle-end] 1fr [page-end];
+        grid-auto-flow: column;
+        align-items: center;
+    }
+    .card {
+        grid-column: var(--_card-grid-column);
+        grid-row: var(--_card-grid-row);
+    }
+    
+    .card:nth-child(1) {
+        --_card-grid-column: page-start / middle-start;
+        --_card-grid-row: middle;
+    }
+    
+    .card:nth-child(2) {
+        --_card-grid-column: middle;
+        --_card-grid-row: page-start / middle-middle;
+    }
+    
+    .card:nth-child(3) {
+        --_card-grid-column: middle;
+        --_card-grid-row: middle-middle / page-end;
+    }
+    
+    .card:nth-child(4) {
+        --_card-grid-column: middle-end / page-end;
+        --_card-grid-row: middle;
+    }
+}
+
+
