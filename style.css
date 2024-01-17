@@ -9,7 +9,7 @@
     --clr-neutral-light-gray: hsl(0, 0%, 98%);
 
     --fs-p: 15px;
-    --ff-default: 'Poppings', sans-serif;
+    --ff-default: 'Poppins', sans-serif;
     --fw-extralight: 200;
     --fw-regular: 400;
     --fw-semibold: 600;
@@ -26,25 +26,36 @@
     box-sizing: border-box;
 }
 
+img,
+svg {
+    max-width: 100%;
+    display: block;
+}
+
 body {
     display: grid;
     min-height: 100svh;
-    padding: 5rem;
+    padding-block: 4rem;
+    /* padding-block-end: 15vh; */
     grid-template-rows: auto 1fr;
-    row-gap: 2rem;
+    row-gap: 3.5rem;
     font-family: var(--ff-default);
     font-size: var(--fs-p);
+    background-color: var(--clr-neutral-light-gray);
+    color: var(--clr-neutral-dark-blue);
+    justify-items: center;
 }
 
 header {
     text-align: center;
     display: grid;
     row-gap: 1rem;
+    max-width: 33rem;
 }
 
 .page-title,
 .page-subtitle {
-    font-size: calc(var(--fs-p) * 2.5);
+    font-size: calc(var(--fs-p) * 1.4 + 1vw) ;
 }
 
 .page-title {
@@ -55,12 +66,50 @@ header {
     font-weight: var(--fw-semibold);
 }
 
+.page-sell {
+    color: var(--clr-neutral-gray-blue);
+    padding-inline: 0.5rem;
+}
+
 main {
     display: grid;
     align-items: center;
+    gap: 2rem;
+    max-width: 67.5rem;
 }
 
-@media (min-width: 600px) {
+header,
+main {
+    margin-inline: 1.5rem;
+}
+
+.card {
+    --_border-color: var(--border-color, red);
+    background-color: white;
+    height: 100%;
+    padding: 1.75rem;
+    border-radius: 5px;
+    border-block-start: 5px solid var(--_border-color);
+    box-shadow: 0 0.5rem 1rem -0.5rem var(--clr-neutral-gray-blue);
+}
+
+.card:nth-child(1) {
+    --border-color: var(--clr-primary-cyan);
+}
+
+.card:nth-child(2) {
+    --border-color: var(--clr-primary-red);
+}
+
+.card:nth-child(3) {
+    --border-color: var(--clr-primary-orange);
+}
+
+.card:nth-child(4) {
+    --border-color: var(--clr-primary-blue);
+}
+
+@media (min-width: 900px) {
     main {
         grid-template-columns: [page-start] 1fr [middle-start] 1fr [middle-end] 1fr [page-end];
         grid-template-rows: [page-start] 1fr [middle-start] 1fr [middle-middle] 1fr [middle-end] 1fr [page-end];
@@ -91,6 +140,21 @@ main {
         --_card-grid-column: middle-end / page-end;
         --_card-grid-row: middle;
     }
+}
+
+.feature-title {
+    font-size: calc(var(--fs-p) * 1.3);
+    font-weight: var(--fw-semibold);
+}
+
+.feature-details {
+    margin-block: 0.5rem 2rem;
+    font-size: calc(var(--fs-p) * 0.875);
+    color: var(--clr-neutral-gray-blue);
+}
+
+.card svg {
+    margin-inline-start: auto;
 }
 
 
